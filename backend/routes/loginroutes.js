@@ -20,7 +20,7 @@ exports.login = async function(req, res){
 
     user_id = parseInt(username);
     if (username === 'admin')
-        user_id = 0;
+        user_id = 2000;
     
     if (isNaN(user_id)) {
         res.send({

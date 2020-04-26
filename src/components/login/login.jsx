@@ -20,9 +20,6 @@ class Counter extends Component {
     }
     handleClick = (event) => {
         event.preventDefault()
-        // if (this.state.Username === 'hammad_arif021@hotmail.com' && this.state.Password === '12345678'){
-        //      this.props.history.push('/loading')
-        // } 
         var apiBaseUrl =  "http://localhost:4000/api/";
         var self = this;
         var payload = {
@@ -31,9 +28,12 @@ class Counter extends Component {
         }
         axios.post(apiBaseUrl+'login', payload)
         .then(function(response){
-            if (response.data.code === 200)
-            {
+            if (response.data.code === 200) {           // successful login
                 self.props.history.push('/loading');
+            } else if (response.data.code === 204) {    // incorrect email or password
+
+            } else if (response.data.code === 206) {    // employee does not exist
+
             }
         })
         return 

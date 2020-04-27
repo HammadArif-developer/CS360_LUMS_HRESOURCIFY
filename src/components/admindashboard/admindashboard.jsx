@@ -15,6 +15,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import InputBase from "@material-ui/core/InputBase";
 import Divider from "@material-ui/core/Divider";
+import Container from "@material-ui/core/Container";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -102,50 +103,54 @@ export default function ClippedDrawer() {
           </List>
         </div>
       </Drawer>
-      <ul>
-        <li>
-          <div className="addUserButton">
-            <h3 className="buttonText">
-              <b>Add User</b>
-            </h3>
-          </div>
-        </li>
-        <li>
-          <div className="addDepartmentButton">
-            <h3 className="buttonText2">
-              <b>Add Department</b>
-            </h3>
-          </div>
-        </li>
-        <li>
-          <div className="leaveButton">
-            <h3 className="buttonText2">
-              <b>View Leave Request</b>
-            </h3>
-          </div>
-        </li>
-        <li>
-          <div className="deleteUserButton">
-            <h3 className="buttonText">
-              <b>Delete User</b>
-            </h3>
-          </div>
-        </li>
-        <li>
-          <div className="deleteDepartmentButton">
-            <h3 className="buttonText2">
-              <b>Delete Department</b>
-            </h3>
-          </div>
-        </li>
-        <li>
-          <div className="benefitButton">
-            <h3 className="buttonText2">
-              <b>View Benefit Request</b>
-            </h3>
-          </div>
-        </li>
-      </ul>
+      <div className="ContainerPlacing">
+        <Container fixed>
+          <ul>
+            <li>
+              <div className="addUserButton">
+                <h3 className="buttonText">
+                  <b>Add User</b>
+                </h3>
+              </div>
+            </li>
+            <li>
+              <div className="addDepartmentButton">
+                <h3 className="buttonText2">
+                  <b>Add Department</b>
+                </h3>
+              </div>
+            </li>
+            <li>
+              <div className="leaveButton">
+                <h3 className="buttonText2">
+                  <b>View Leave Request</b>
+                </h3>
+              </div>
+            </li>
+            <li>
+              <div className="deleteUserButton">
+                <h3 className="buttonText">
+                  <b>Delete User</b>
+                </h3>
+              </div>
+            </li>
+            <li>
+              <div className="deleteDepartmentButton">
+                <h3 className="buttonText2">
+                  <b>Delete Department</b>
+                </h3>
+              </div>
+            </li>
+            <li>
+              <div className="benefitButton">
+                <h3 className="buttonText2">
+                  <b>View Benefit Request</b>
+                </h3>
+              </div>
+            </li>
+          </ul>
+        </Container>
+      </div>
     </React.Fragment>
   );
 }

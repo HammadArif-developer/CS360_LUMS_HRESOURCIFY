@@ -14,8 +14,8 @@ connection.connect((err) => {
 
 exports.login = async function(req, res){
     console.log(req.body);
-    var username = req.body.username;
-    var password = req.body.password;
+    var username = req.body.Username;
+    var password = req.body.Password;
     var user_id = username;
 
     user_id = parseInt(username);
@@ -23,6 +23,7 @@ exports.login = async function(req, res){
         user_id = 2000;
     
     if (isNaN(user_id)) {
+        console.log("here")
         res.send({
             'code'    : 206,
             'success' : 'Employee does not exist'

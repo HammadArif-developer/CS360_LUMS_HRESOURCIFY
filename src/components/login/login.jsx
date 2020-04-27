@@ -9,31 +9,37 @@ class Counter extends Component {
         this.state = {
             Username : '',
             Password : '',
+            errorMessage: '',
         }
         this.handleClick = this.handleClick.bind(this);
         this.inputChange = this.inputChange.bind(this);
-    }   
+    }
     inputChange(e) {
         this.setState({
             [e.target.name] : e.target.value
         });
     }
-    handleClick = (event) => {
+    handleClick(event) {
         event.preventDefault()
         var apiBaseUrl =  "http://localhost:4000/api/";
         var self = this;
         var payload = {
-            'username': this.state.Username,
-            'password': this.state.Password
+            'Username': this.state.Username,
+            'Password': this.state.Password
         }
         axios.post(apiBaseUrl+'login', payload)
         .then(function(response){
             if (response.data.code === 200) {           // successful login
                 self.props.history.push('/loading');
-            } else if (response.data.code === 204) {    // incorrect email or password
+            } else if (response.data.code === 204) {
+                self.setState({
+                    errorMessage: 'Invalid Email or Password',
+                });    // incorrect email or password
 
-            } else if (response.data.code === 206) {    // employee does not exist
-
+            } else if (response.data.code === 206) {  
+                self.setState({
+                    errorMessage: 'Employee Does Not Exist',
+                });  // employee does not exist
             }
         })
         return 
@@ -56,9 +62,11 @@ class Counter extends Component {
                 </div>
 
                 <div className="wrap-input100 validate-input">
-                    <input className="input100" type="password" name="Password" placeholder="Password" required onChange = {this.inputChange}></input>
+                    <input className="input100" type="password" name="Password" placeholder="Password" required onChange = {this.inputChange}></input>               
                 </div>
-                
+                <div style={{ fontSize:12 , color: "red", textAlign: "center"}}>
+                        {this.state.errorMessage}
+                </div>
                 <div className="container-login-form-btn">
                     <button className="login-form-btn" onClick={this.handleClick} >
                         Login
